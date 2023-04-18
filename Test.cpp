@@ -1,4 +1,4 @@
-#define CATCH_CONFIG_MAIN 
+#define CATCH_CONFIG_MAIN
 #include "doctest.h"
 #include <stdexcept>
 #include <sstream>
@@ -67,14 +67,13 @@ TEST_CASE("Test 7--> Fraction Mul: ")
     CHECK(result.getDenominator() == 4);
 }
 
-
 TEST_CASE("Test 8--> Fraction Div: ")
 {
-Fraction f1(3, 4);
-Fraction f2(2, 1);
-Fraction result = f1 / f2;
-CHECK(result.getNumerator() == 3);
-CHECK(result.getDenominator() == 8);
+    Fraction f1(3, 4);
+    Fraction f2(2, 1);
+    Fraction result = f1 / f2;
+    CHECK(result.getNumerator() == 3);
+    CHECK(result.getDenominator() == 8);
 }
 
 TEST_CASE("Test 9--> Fraction Div: ")
@@ -103,7 +102,7 @@ TEST_CASE("Test 11--> Fraction Compare: ")
     CHECK(f2 <= f1);
 }
 
-TEST_CASE("Test 12--> Fraction Decrement: ") 
+TEST_CASE("Test 12--> Fraction Decrement: ")
 {
     Fraction f2(3, 4);
     Fraction result = --f2;
@@ -111,14 +110,13 @@ TEST_CASE("Test 12--> Fraction Decrement: ")
     CHECK(result.getDenominator() == 4);
 }
 
-TEST_CASE("Test 13--> Fraction Increment: ") 
+TEST_CASE("Test 13--> Fraction Increment: ")
 {
     Fraction f1(1, 2);
     Fraction result = ++f1;
     CHECK(result.getNumerator() == 3);
     CHECK(result.getDenominator() == 2);
 }
-
 
 TEST_CASE("Test 14--> Fraction Default constructor: ")
 {
@@ -137,36 +135,36 @@ TEST_CASE("Test 15--> Fraction Simplification: ")
 TEST_CASE("Test 16--> Fraction Divide by zero: ")
 {
     Fraction f(5, 0);
-    CHECK_THROWS_AS(f.simplfy(), std::domain_error);        // simplifying a fraction with denominator 0 throws an exception
+    CHECK_THROWS_AS(f.reduce(), std::domain_error);         // simplifying a fraction with denominator 0 throws an exception
     CHECK_THROWS_AS(f.getNumerator(), std::domain_error);   // getNumerator() on a fraction with denominator 0 throws an exception
     CHECK_THROWS_AS(f.getDenominator(), std::domain_error); // getDenominator() on a fraction with denominator 0 throws an exception
 }
 
-TEST_CASE("Test 17--> Fraction Divide by zero: ") {
+TEST_CASE("Test 17--> Fraction Divide by zero: ")
+{
     Fraction f1(1, 2);
-    Fraction result = f1 / f2;
-    CHECK_THROWS_AS(result , std::invalid_argument);
+    Fraction f2(0, 1);
+    CHECK_THROWS_AS(f1 / f2, std::invalid_argument);
 }
 
-TEST_CASE("Test 18-->: Fraction Divide by zero: ") {
+TEST_CASE("Test 18-->: Fraction Divide by zero: ")
+{
     Fraction f1(1, 2);
-    Fraction result = f1 / 0;
-    CHECK_THROWS_AS(result , std::invalid_argument);
+    CHECK_THROWS_AS(f1 / 0, std::invalid_argument);
 }
 
 TEST_CASE("Test 19--> Fraction Invalid input: ")
 {
-    
+
     std::istringstream iss("abc");
     Fraction f;
-    CHECK_THROWS_AS(iss >> f, std::invalid_argument); //trying to read a non-number from a stream into a Fraction
+    CHECK_THROWS_AS(iss >> f, std::invalid_argument); // trying to read a non-number from a stream into a Fraction
 }
 
 TEST_CASE("Test 20--> Fraction Invalid input: ")
 {
-    
+
     std::istringstream iss("2/3");
     Fraction f;
-    CHECK_THROWS_AS(iss >> f, std::invalid_argument); //trying to read a non-number from a stream into a Fraction
+    CHECK_THROWS_AS(iss >> f, std::invalid_argument); // trying to read a non-number from a stream into a Fraction
 }
-
