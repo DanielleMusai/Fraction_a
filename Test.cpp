@@ -1,4 +1,3 @@
-#define CATCH_CONFIG_MAIN
 #include "doctest.h"
 #include <stdexcept>
 #include <sstream>
