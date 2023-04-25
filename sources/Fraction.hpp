@@ -16,7 +16,7 @@ namespace ariel
         Fraction(int num = 0, int den = 1);                                                                      // default values and prevent devision by 0
         Fraction(double flt) : numerator(static_cast<int>(flt * FRACTION_SCALE)), denominator(FRACTION_SCALE) {} // casting to a fraction
         void reduce();                                                                                           // which simplifies the fraction by dividing the numerator and denominator by their gcd. if the fraction is 6/8, simplfy would simplify it to 3/4.
-        // i used friend functions to allow them to access the private member variables numerator and denominator.
+        // I used friend functions to allow them to access the private member variables numerator and denominator.
         int getNumerator() const;
         int getDenominator() const;
         friend Fraction operator+(const Fraction &other, const Fraction &f);

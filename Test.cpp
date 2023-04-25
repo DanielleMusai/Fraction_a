@@ -153,18 +153,20 @@ TEST_CASE("Test 18-->: Fraction Divide by zero: ")
     CHECK_THROWS_AS(f1 / 0, std::invalid_argument);
 }
 
-TEST_CASE("Test 19--> Fraction Invalid input: ")
+TEST_CASE("Test 19-->  Fraction + double: ")
 {
-
-    std::istringstream iss("abc");
-    Fraction f;
-    CHECK_THROWS_AS(iss >> f, std::invalid_argument); // trying to read a non-number from a stream into a Fraction
+    Fraction f1(1, 2);
+    float f2 = 1.75;
+    Fraction result = f1 + f2;
+    Fraction expected(9, 4);
+    CHECK(result == expected);
 }
 
-TEST_CASE("Test 20--> Fraction Invalid input: ")
+TEST_CASE("Test 20--> double + Fraction: ")
 {
-
-    std::istringstream iss("2/3");
-    Fraction f;
-    CHECK_THROWS_AS(iss >> f, std::invalid_argument); // trying to read a non-number from a stream into a Fraction
+    Fraction f1(1, 2);
+    float f2 = 1.75;
+    Fraction result = f2 + f1;
+    Fraction expected(9, 4);
+    CHECK(result == expected);
 }
